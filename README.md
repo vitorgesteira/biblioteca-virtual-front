@@ -1,27 +1,23 @@
 # BibliotecaVirtualFront
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.3.
+Para criar um novo projeto Angular sem standalone components, você pode usar o seguinte comando no terminal:
 
-## Development server
+```bash
+ng new nome-do-projeto --no-standalone --routing --ssr=false
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Isso desabilita a criação de componentes standalone, e o projeto será configurado no formato padrão, onde os componentes são declarados em módulos (`NgModule`).
 
-## Code scaffolding
+Esse comando cria um novo projeto Angular chamado `my-app` com configurações específicas. Aqui está a explicação de cada parte:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **`ng new my-app`**: Cria um novo projeto Angular com o nome `my-app`.
+  
+- **`--no-standalone`**: Especifica que o projeto não usará standalone components. Em vez disso, os componentes serão declarados dentro de módulos (`NgModule`), como no padrão tradicional do Angular.
 
-## Build
+- **`--routing`**: Adiciona um módulo de roteamento ao projeto. Isso gera um arquivo de roteamento (`app-routing.module.ts`), que é usado para configurar as rotas da aplicação, facilitando a navegação entre páginas/componentes.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **`--ssr=false`**: O `ssr` (Server-Side Rendering) refere-se à renderização do Angular no lado do servidor com Angular Universal. Especificar `--ssr=false` significa que a aplicação não será configurada para usar SSR, ou seja, será uma aplicação puramente client-side (executada apenas no navegador).
 
-## Running unit tests
+Em resumo, esse comando cria um projeto Angular sem standalone components, com suporte a roteamento e sem a configuração de Server-Side Rendering.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
