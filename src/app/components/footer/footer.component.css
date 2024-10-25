@@ -1,0 +1,17 @@
+footer{
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgb(2,13,196);
+  background: linear-gradient(80deg, rgba(2,13,196,1) 0%, rgba(0,198,235,1) 100%);
+}
+
+.text a{
+  color: white;
+}
+
+
