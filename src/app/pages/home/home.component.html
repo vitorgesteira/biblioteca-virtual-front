@@ -7,11 +7,52 @@
     <div class="col-md-10 mx-auto col-lg-5">
       <form [formGroup]="userForm" class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
         <div class="form-floating mb-3">
-          <input type="email" class="form-control" formControlName="name" id="floatingInput" placeholder="name@example.com">
+          <input
+            type="email"
+            class="form-control"
+            [class.is-invalid]="userForm.get('name')?.errors && userForm.get('name')?.touched"
+            formControlName="name"
+            id="floatingInput"
+            placeholder="name@example.com"
+          >
+          <div
+            *ngIf="userForm.get('name')?.hasError('required')"
+            class="invalid-feedback"
+          >
+            O campo é obrigatorio
+          </div>
+          <div
+            *ngIf="userForm.get('name')?.hasError('maxlength')"
+            class="invalid-feedback"
+          >
+            O campo nome não pode ter mais de 10 caracteres
+          </div>
           <label for="floatingInput">Email address</label>
         </div>
         <div class="form-floating mb-3">
-          <input type="password" class="form-control" formControlName="password" id="floatingPassword" placeholder="Password">
+          <input
+            type="password"
+            class="form-control"
+            [class.is-invalid]="userForm.get('password')?.errors && userForm.get('password')?.touched"
+            formControlName="password"
+            id="floatingPassword"
+            placeholder="Password"
+          >
+          <div
+            *ngIf="userForm.get('password')?.hasError('required')"
+            class="invalid-feedback"
+          >
+            O campo é obrigatorio
+          </div>
+          <div
+            *ngIf="
+              userForm.get('password')?.hasError('maxlength') ||
+              userForm.get('password')?.hasError('minlength')
+            "
+            class="invalid-feedback"
+          >
+            O campo senha deve ter entre 6 e 250 caracteres
+          </div>
           <label for="floatingPassword">Password</label>
         </div>
         <div class="checkbox mb-3">
@@ -19,7 +60,14 @@
             <input type="checkbox" value="remember-me"> Remember me
           </label>
         </div>
-        <button (click)="submitForm()" class="w-100 btn btn-lg btn-primary" type="submit">Inscreva-se</button>
+        <button
+          [disabled]="userForm.invalid"
+          (click)="submitForm()"
+          class="w-100 btn btn-lg btn-primary"
+          type="submit"
+        >
+          Inscreva-se
+        </button>
         <hr class="my-4">
         <a class="nav-link" routerLink="/login">Ou click aqui para fazer login</a>
       </form>
