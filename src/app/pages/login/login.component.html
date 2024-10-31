@@ -1,8 +1,55 @@
-<form class="formulario-login container-fluid py-5">
+<form [formGroup]="userForm" class="formulario-login container-fluid py-5">
   <h2>Formulário de Login</h2>
 
-  <input type="text" formControlName="usuario" placeholder="Usuário" />
-  <input type="password" formControlName="senha" placeholder="Senha" />
-  <input type="submit" value="Entrar" />
+  <input
+    type="email"
+    class="form-control"
+    [class.is-invalid]="userForm.get('usuario')?.errors && userForm.get('usuario')?.touched"
+    formControlName="usuario"
+    placeholder="name@example.com"
+  />
+  <div
+    *ngIf="userForm.get('usuario')?.hasError('required')"
+    class="invalid-feedback"
+  >
+    O campo é obrigatório
+  </div>
+  <div
+    *ngIf="userForm.get('usuario')?.hasError('maxlength')"
+    class="invalid-feedback"
+  >
+    O campo nome não pode ter mais de 10 caracteres
+  </div>
+
+  <input
+    type="password"
+    class="form-control"
+    [class.is-invalid]="userForm.get('password')?.errors && userForm.get('password')?.touched"
+    formControlName="password"
+    placeholder="password"
+  />
+  <div
+    *ngIf="userForm.get('password')?.hasError('required')"
+    class="invalid-feedback"
+  >
+    O campo é obrigatorio
+  </div>
+  <div
+    *ngIf="
+      userForm.get('password')?.hasError('maxlength') ||
+      userForm.get('password')?.hasError('minlength')
+    "
+    class="invalid-feedback"
+  >
+    O campo senha deve ter entre 6 e 10 caracteres
+  </div>
+
+  <input
+    [disabled]="userForm.invalid"
+    (click)="submitForm()"
+    type="submit"
+    class="w-100 btn btn-lg btn-primary"
+    value="Entrar"
+  />
   <a routerLink="/" title="Cadastro">Cadastro</a>
 </form>

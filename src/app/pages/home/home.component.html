@@ -10,19 +10,19 @@
           <input
             type="email"
             class="form-control"
-            [class.is-invalid]="userForm.get('name')?.errors && userForm.get('name')?.touched"
-            formControlName="name"
+            [class.is-invalid]="userForm.get('usuario')?.errors && userForm.get('usuario')?.touched"
+            formControlName="usuario"
             id="floatingInput"
             placeholder="name@example.com"
           >
           <div
-            *ngIf="userForm.get('name')?.hasError('required')"
+            *ngIf="userForm.get('usuario')?.hasError('required')"
             class="invalid-feedback"
           >
             O campo é obrigatorio
           </div>
           <div
-            *ngIf="userForm.get('name')?.hasError('maxlength')"
+            *ngIf="userForm.get('usuario')?.hasError('maxlength')"
             class="invalid-feedback"
           >
             O campo nome não pode ter mais de 10 caracteres
@@ -51,7 +51,7 @@
             "
             class="invalid-feedback"
           >
-            O campo senha deve ter entre 6 e 250 caracteres
+            O campo senha deve ter entre 6 e 10 caracteres
           </div>
           <label for="floatingPassword">Password</label>
         </div>
