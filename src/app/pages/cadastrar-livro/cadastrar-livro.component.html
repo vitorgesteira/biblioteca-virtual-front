@@ -1,0 +1,184 @@
+<div class="card">
+  <div class="card-body">
+    <h3 class="card-title">Cadastro de Livro</h3>
+    <form [formGroup]="form">
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="inputTitulo">Título</label>
+          <input
+            type="text"
+            class="form-control"
+            [class.is-invalid]="form.get('titulo')?.errors && form.get('titulo')?.touched"
+            id="inputTitulo"
+            placeholder="Título do Livro"
+            formControlName="titulo"
+            required
+          >
+          <div
+            *ngIf="form.get('titulo')?.hasError('required')"
+            class="invalid-feedback"
+          >
+            Campo é obrigatório
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputAutores">Autores</label>
+          <input
+            type="text"
+            class="form-control is-invalid"
+            [class.is-invalid]="form.get('autor')?.errors && form.get('autor')?.touched"
+            id="inputAutores"
+            placeholder="Autores do Livro"
+            formControlName="autor"
+            required
+          >
+          <div
+            *ngIf="form.get('autor')?.hasError('required')"
+            class="invalid-feedback"
+          >
+            Campo é obrigatório
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="inputEditora">Editora</label>
+          <input
+            type="text"
+            class="form-control"
+            [class.is-invalid]="form.get('editora')?.errors && form.get('editora')?.touched"
+            id="inputEditora"
+            placeholder="Editora"
+            formControlName="editora"
+            required
+          >
+          <div
+            *ngIf="form.get('editora')?.hasError('required')"
+            class="invalid-feedback"
+          >
+            Campo é obrigatório
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputPreco">Preço</label>
+          <input
+            type="number"
+            class="form-control"
+            [class.is-invalid]="form.get('preco')?.errors && form.get('preco')?.touched"
+            id="inputPreco"
+            placeholder="Preço"
+            formControlName="preco"
+            required
+            step="0.01"
+          >
+          <div
+            *ngIf="form.get('preco')?.hasError('required')"
+            class="invalid-feedback"
+          >
+            Campo é obrigatório
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Formato do Livro</label>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="checkImpresso"
+                (change)="toggleImpresso()"
+              >
+              <label class="form-check-label" for="checkImpresso">
+                Impresso
+              </label>
+            </div>
+            <fieldset class="mt-2" *ngIf="showImpresso">
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="inputFrete">Frete</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    [class.is-invalid]="form.get('frete')?.errors && form.get('frete')?.touched"
+                    id="inputFrete"
+                    placeholder="Detalhes do Frete"
+                    formControlName="frete"
+                  >
+                  <div
+                    *ngIf="form.get('frete')?.hasError('required')"
+                    class="invalid-feedback"
+                  >
+                    Campo é obrigatório
+                  </div>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputEstoque">Estoque</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    [class.is-invalid]="form.get('estoque')?.errors && form.get('estoque')?.touched"
+                    id="inputEstoque"
+                    placeholder="Quantidade em Estoque"
+                    formControlName="estoque"
+                  >
+                  <div
+                    *ngIf="form.get('estoque')?.hasError('required')"
+                    class="invalid-feedback"
+                  >
+                    Campo é obrigatório
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="col-md-6">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="checkEletronico"
+                (change)="toggleEletronico()"
+              >
+              <label class="form-check-label" for="checkEletronico">
+                Eletrônico
+              </label>
+            </div>
+            <fieldset class="mt-2" *ngIf="showEletronico">
+              <div class="form-group">
+                <label for="inputTamanho">Tamanho</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  [class.is-invalid]="form.get('tamanho')?.errors && form.get('tamanho')?.touched"
+                  id="inputTamanho"
+                  placeholder="Tamanho do Arquivo"
+                  formControlName="tamanho"
+                >
+                <div
+                    *ngIf="form.get('tamanho')?.hasError('required')"
+                    class="invalid-feedback"
+                  >
+                    Campo é obrigatório
+                  </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button
+          type="submit"
+          [disabled]="!form.valid"
+          (click)="cadastrar()"
+          class="btn btn-primary"
+        >
+          Cadastrar Livro
+        </button>
+        <button type="button" class="btn btn-secondary">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>

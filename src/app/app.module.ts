@@ -9,6 +9,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SobreComponent } from './pages/sobre/sobre.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CadastrarLivroComponent } from './pages/cadastrar-livro/cadastrar-livro.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     NavbarComponent,
     FooterComponent,
     LoginComponent,
-    SobreComponent
+    SobreComponent,
+    CadastrarLivroComponent
   ],
   imports: [
     BrowserModule,

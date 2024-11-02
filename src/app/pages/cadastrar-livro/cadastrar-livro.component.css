@@ -1,0 +1,16 @@
+.card{
+  width: 100%;
+  border: 1px solid #ced4da;
+  background-color: rgb(239, 236, 233);
+}
+
+.card-title{
+  text-align: center;
+}
+
+.form-control {
+  width: 96%;
+  border: 1px solid #ced4da; /* Borda adicionada aos inputs */
+  border-radius: 0.25rem; /* Arredondamento opcional */
+}
+
